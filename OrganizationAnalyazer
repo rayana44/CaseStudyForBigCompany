@@ -1,0 +1,59 @@
+import java.util.Map;
+
+import com.sun.tools.javac.util.List;
+
+public class OrganizationAnalyazer {
+	public static vpid main(String args[]) trows IOEXception
+	{
+		Map<String,String>managerMap= new HashMap<>();
+		Map<String,String>salaryMap= new HashMap<>();
+		try(BufferrReader br = new Bufferreader(new FileReader("employee.txt")))
+		{
+			String line ;
+			whie((line =br.readLine))!=null)
+{           String [] parts line.split(",");
+            String empID = part[0].trim();
+            String managerID= part[1].trim();
+            
+            int salary = Integer.parseInt(parts[2].trim());
+            manageMap.put(empID,managerID);
+            salaryMap.put(empID, salary);
+	
+}
+		}
+		for(Map.Entry<String,String>entry:managerMap.entrySet())
+		{
+			String empID = entry.getKey();
+			String manageID =entry.getValue();
+			if(manageID.endsWith("-1"))
+				continue;
+			int empSalary = salaryMap.get(empID);
+			int manageSalary =salaryMap.get(manageID);
+			List<Integer> subordinates = new ArrayList<>();
+			for(Map.Entry<String,String> e:managerMap.entrySet())
+			{
+				subordinates.add(salaryMap.get(e.getKey()));
+			}
+		}
+		if(!subordinates.isEmpty())
+		{
+			int averageSubordinates =subordinates.stream().mapToInt(Integer::intValue).sum();
+			subordinates.size();
+			
+			int minSalary=(int)(averageSubordinates*1.2);
+			int maxSalary =(int)(averageSubordinates*1.5);
+			if(managerSalary<minSalary)
+			{
+				System.out.println("Manager"+managerrID+"Ears less by"
+			+(minsalary-managerSalary));
+			}
+			else if(managerSalary>maxSalary)
+			{
+				System.out.println("Manager"+managerrID+"earns more by"+(managersalary-maxSalary));
+			}
+		}
+	}
+}
+}
+
+}
